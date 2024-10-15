@@ -1,3 +1,11 @@
+using mvc.Models;
+
+using MongoDB.Driver;
+
+
+IConfiguration configuration = (IConfiguration)new ConfigurationBuilder().SetBasePath(AppDomain.CurrentDomain.BaseDirectory).AddJsonFile("appsettings.json").Build();
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

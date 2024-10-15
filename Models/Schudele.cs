@@ -1,6 +1,6 @@
 ﻿namespace mvc.Models
 {
-    public class Appointment
+    public class Schudele//Aqui é o objeto que representa a agendamento
     {
         public int Id { get; set; }
         public DateTime DateTime { get; set; }
