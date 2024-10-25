@@ -11,7 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 //chamando conexão do mongodb
 IServiceCollection services = builder.Services;
 services.AddMvc();
-// Add services to the container.
+services.AddSingleton<IMongoClient>(new MongoClient("Colocar o enderço do mongodb"));// Add services to the container.
+
 
 
 var app = builder.Build();
