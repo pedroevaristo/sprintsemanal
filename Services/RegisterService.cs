@@ -1,20 +1,29 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson.Serialization;
+using MongoDB.Driver;
 using mvc.Models;
 
 namespace mvc.Services//aqui tem objtivo de fazer a configuração do banco de dados
 {
     public class RegisterService
     {
-        public readonly IMongoCollection<Models.Register> _register;
+        private readonly IMongoDatabase _database;
 
-
-        public RegisterService(IConfiguration configuration)//Conexão com o banco de dados Mas sempre de olho Como colocar entre parentees a localização da classe 
+        public RegisterService(string connectionString, string databaseName)
         {
-            MongoClient cliente = new MongoClient(configuration.GetConnectionString("register"));
-            IMongoDatabase database = cliente.GetDatabase("register");
-            _register = database.GetCollection<Models.Register>("register");
+            var client = new MongoClient(connectionString);
+            _database = client.GetDatabase(databaseName);
+            BsonClassMap.RegisterClassMap<Register>(map => {
+                map.AutoMap();
+                map.MapCreator(c => new Register());
+            });
+
         }
-  
+
+        public void Register(Register register)
+        {
+            var collection = _database.GetCollection<Register>("user");
+            collection.InsertOne(register);
+        }
         
     }
 }

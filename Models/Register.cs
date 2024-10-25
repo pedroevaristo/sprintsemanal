@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using System.ComponentModel.DataAnnotations;
 
 namespace mvc.Models
 {
@@ -10,12 +11,40 @@ namespace mvc.Models
         public string Id { get; set; }
 
         [BsonElement("Email")]
-        public String Email { get; set; }
-        
-        [BsonElement("Password")]
-        public String Password { get; set; }
+        [Display(Name = "Email Corporativo")]
+        public string Email { get; set; }
 
-        [BsonElement("passwordAdmins")]
-        public String passwordAdmins { get; set; }
-    }
+        [BsonElement("Password")]
+        [Display(Name = "Senha")]
+        public string Password { get; set; }
+
+        [BsonElement("PasswordAdmins")]
+        [Display(Name = "Senha de Administrador")]
+        public string PasswordAdmins { get; set; }
+
+        [BsonElement("CEP")]
+        [Display(Name = "CEP")]
+        public string CEP { get; set; }
+
+        [BsonElement("PositionUser")]
+        [Display(Name = "Cargo do Usuário")]
+        public string PositionUser { get; set; }
+
+        [BsonElement("CPF")]
+        [Display(Name = "CPF")]
+        public string CPF { get; set; }
+
+        [BsonElement("IdUser")]
+        [Display(Name = "Identificação do Usuário")] // aqui será no formato que estiver do email como exemplo: jose.clezio@animaeducacao.com.br || jose.clezio
+        public string IdUser { get; set; }
+
+        [BsonElement("AdmissionDate")]
+        [Display(Name = "Data de Admissão")]
+        public string AdmissionDate { get; set; }
+
+        [BsonElement("DateOfBirth")]
+        [Display(Name = "Data de Nascimento")]
+        public string DateOfBirth { get; set; }
+
+    } }
 }
