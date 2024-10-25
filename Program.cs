@@ -9,10 +9,10 @@ IConfiguration configuration = (IConfiguration)new ConfigurationBuilder().SetBas
 var builder = WebApplication.CreateBuilder(args);
 
 //chamando conexão do mongodb
-
+IServiceCollection services = builder.Services;
+services.AddMvc();
 // Add services to the container.
-builder.Services.AddControllersWithViews();
-}
+
 
 var app = builder.Build();
 

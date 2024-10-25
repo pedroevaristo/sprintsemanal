@@ -9,9 +9,9 @@ namespace mvc.Controllers
         {
             return View();
         }
-        public IActionResult ()
+       /* public IActionResult ()
         { //fazer a operação de cadastra as informações colcoando abaixo
-        }
+        }*/
            
 
     }
